@@ -1,0 +1,11 @@
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: hello
+# spec:
+#   routes:
+#     - rule: Path(`/`)
+#       services:
+#         - name: hello
+#           port: 80

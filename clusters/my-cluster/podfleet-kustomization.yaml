@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: podfleet
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  path: ./clusters/my-cluster/k8s
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: podfleet
+  targetNamespace: default
+
