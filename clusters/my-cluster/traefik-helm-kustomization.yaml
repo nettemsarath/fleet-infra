@@ -1,0 +1,13 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: infrastructure
+  namespace: default
+spec:
+  interval: 1m
+  sourceRef:
+    kind: HelmRepository
+    name: flux-system
+  path: ./clusters/my-cluster/release
+  prune: true
