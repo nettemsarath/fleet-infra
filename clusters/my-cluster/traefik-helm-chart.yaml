@@ -1,16 +1,20 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+---
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: ingress-nginx
-  namespace: ingress-system
+  name: traefik
+  namespace: default
+  annotations:
+    fluxcd.io/ignore: "false"
 spec:
-  interval: 5m
+  releaseName: traefik
   chart:
-    spec:
-      chart: ingress-nginx
-      version: "4.0.13"
-      sourceRef:
-        kind: HelmRepository
-        name: ingress-nginx
-        namespace: flux-system
-      interval: 1m
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: traefik
+    version: 1.78.0
+  values:
+    serviceType: LoadBalancer
+    rbac:
+      enabled: true
+    dashboard:
+      enabled: true
