@@ -25,8 +25,6 @@ spec:
   interval: 1m0s
   releaseName: traefik
   targetNamespace: default
-  values:
-    replicaCount: 5
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
@@ -48,12 +46,12 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: infrastructure
-  namespace: default
+  name: traefik-api-crds
+  namespace: flux-system
 spec:
-  interval: 1m
+  interval: 15m
+  prune: false
   sourceRef:
     kind: GitRepository
-    name: flux-system
-  path: ./clusters/my-cluster/release
-  prune: true
+    name: traefik-crds
+    namespace: flux-system
