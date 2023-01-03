@@ -12,6 +12,6 @@ spec:
       version: "4.0.13"
       sourceRef:
         kind: HelmRepository
-        name: ingress-nginx
+        name: traefik
         namespace: flux-system
       interval: 1m
