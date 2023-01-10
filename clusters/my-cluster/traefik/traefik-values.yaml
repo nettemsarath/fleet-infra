@@ -1,0 +1,19 @@
+# entryPoints:
+#   web:
+#     address: ":80"
+
+#   websecure:
+#     address: ":443"
+# certResolvers:
+#   myresolver:
+#     email: "nettemsarath1@gmail.com"
+#     storage: "/data/acme.json"
+#     dnsChallenge:
+#       # used during the challenge
+#       provider: godaddy
+
+#   env:
+#     - name: GODADDY_API_KEY
+#       value: "3mM44UcgfH6Kbp_VUpWjcVY6DedYbqbv1Qqdu"
+#     - name: GODADDY_API_SECRET
+#       value: "G5KrhmfU8WscMbHrBwisAg"
