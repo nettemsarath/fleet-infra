@@ -23,8 +23,8 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: traefik
-      valuesFiles:
-        - traefik/traefik-values.yaml
+      # valuesFiles:
+      #   - traefik/traefik-values.yaml
   releaseName: traefik
   targetNamespace: default
 
