@@ -15,14 +15,16 @@ metadata:
   name: traefik
   namespace: flux-system
 spec:
+  interval: 1m0s
   chart:
     spec:
       chart: traefik
+      version: 20.6.0
       sourceRef:
         kind: HelmRepository
         name: traefik
-      version: 10.24.2
-  interval: 1m0s
+      valuesFiles:
+        - traefik-values.yaml
   releaseName: traefik
   targetNamespace: default
 
@@ -65,19 +67,7 @@ metadata:
   namespace: default
 spec:
   tls:
-    certResolvers:
-      myresolver:
-        email: "nettemsarath1@gmail.com"
-        storage: "/data/acme.json"
-        dnsChallenge:
-          # used during the challenge
-          provider: godaddy
-
-      env:
-        - name: GODADDY_API_KEY
-          value: "3mM44UcgfH6Kbp_VUpWjcVY6DedYbqbv1Qqdu"
-        - name: GODADDY_API_SECRET
-          value: "G5KrhmfU8WscMbHrBwisAg"
+    certResolver: myresolver
   entryPoints:
     - web
     - websecure
@@ -87,21 +77,3 @@ spec:
       services:
         - name: hello-app-demo
           port: 80
-# # helm install --namespace traefik --values=./cert-issuer.yml traefik traefik/traefik
-# # helm install traefik traefik/traefik --configFile=cert-issuer.yml
-
-# #  traefik --configFile=foo/bar/myconfigfile.yml
-
-# certResolvers:
-#   myresolver:
-#     email: "nettemsarath1@gmail.com"
-#     storage: "/data/acme.json"
-#     dnsChallenge:
-#       # used during the challenge
-#       provider: godaddy
-
-#   env:
-#     - name: GODADDY_API_KEY
-#       value: "3mM44UcgfH6Kbp_VUpWjcVY6DedYbqbv1Qqdu"
-#     - name: GODADDY_API_SECRET
-#       value: "G5KrhmfU8WscMbHrBwisAg"
