@@ -53,9 +53,27 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  path: ./clusters/my-cluster/traefik
   prune: false
   sourceRef:
     kind: GitRepository
     name: traefik-crds
     namespace: flux-system
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-router
+  namespace: default
+spec:
+  # tls:
+  #   certResolver: myresolver
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`test.nettemsarath.com`) || Path(`/`) || PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: hello-app-demo
+          port: 80
