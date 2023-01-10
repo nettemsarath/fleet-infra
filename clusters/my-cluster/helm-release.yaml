@@ -64,11 +64,44 @@ metadata:
   name: frontend-ingress-route-secure
   namespace: default
 spec:
+  tls:
+    certResolvers:
+      myresolver:
+        email: "nettemsarath1@gmail.com"
+        storage: "/data/acme.json"
+        dnsChallenge:
+          # used during the challenge
+          provider: godaddy
+
+      env:
+        - name: GODADDY_API_KEY
+          value: "3mM44UcgfH6Kbp_VUpWjcVY6DedYbqbv1Qqdu"
+        - name: GODADDY_API_SECRET
+          value: "G5KrhmfU8WscMbHrBwisAg"
   entryPoints:
     - web
+    - websecure
   routes:
     - match: Host(`test.nettemsarath.com`) || Path(`/`) || PathPrefix(`/`)
       kind: Rule
       services:
         - name: hello-app-demo
           port: 80
+# # helm install --namespace traefik --values=./cert-issuer.yml traefik traefik/traefik
+# # helm install traefik traefik/traefik --configFile=cert-issuer.yml
+
+# #  traefik --configFile=foo/bar/myconfigfile.yml
+
+# certResolvers:
+#   myresolver:
+#     email: "nettemsarath1@gmail.com"
+#     storage: "/data/acme.json"
+#     dnsChallenge:
+#       # used during the challenge
+#       provider: godaddy
+
+#   env:
+#     - name: GODADDY_API_KEY
+#       value: "3mM44UcgfH6Kbp_VUpWjcVY6DedYbqbv1Qqdu"
+#     - name: GODADDY_API_SECRET
+#       value: "G5KrhmfU8WscMbHrBwisAg"

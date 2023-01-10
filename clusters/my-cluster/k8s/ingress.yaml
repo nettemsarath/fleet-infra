@@ -2,10 +2,17 @@
 # apiVersion: traefik.containo.us/v1alpha1
 # kind: IngressRoute
 # metadata:
-#   name: hello
+#   name: frontend-ingress-route-secure
+#   namespace: default
 # spec:
+#   tls:
+#     certResolver: myresolver
+#   entryPoints:
+#     - web
+#     - websecure
 #   routes:
-#     - rule: Path(`/`)
+#     - match: Host(`test.nettemsarath.com`) || Path(`/`) || PathPrefix(`/`)
+#       kind: Rule
 #       services:
-#         - name: hello
+#         - name: hello-app-demo
 #           port: 80
