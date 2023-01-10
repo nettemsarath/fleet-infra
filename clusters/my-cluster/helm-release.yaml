@@ -56,18 +56,3 @@ spec:
     kind: GitRepository
     name: traefik-crds
     namespace: flux-system
-
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: hello
-spec:
-  entryPoints:
-    - web
-  routes:
-    - match: Host(`test.nettemsarath.com`) || Path(`/`) || PathPrefix(`/ui`)
-      kind: Rule
-      services:
-        - name: hello-app-demo
-          port: 80
