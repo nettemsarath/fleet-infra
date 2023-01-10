@@ -66,8 +66,8 @@ metadata:
   name: ingress-route
   namespace: default
 spec:
-  tls:
-    certResolver: myresolver
+  # tls:
+  #   certResolver: myresolver
   entryPoints:
     - web
     - websecure
