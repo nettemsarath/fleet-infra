@@ -69,7 +69,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`test.nettemsarath.com`) || Path(`/`) || PathPrefix(`/`)
+    - match: Host(`test.nettemsarath.com`) || Path(`/`) || PathPrefix(`/`) || Path(`/ping`)
       kind: Rule
       services:
         - name: hello-app-demo
