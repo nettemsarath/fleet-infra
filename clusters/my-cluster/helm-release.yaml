@@ -63,11 +63,11 @@ metadata:
   name: traefik-router
   namespace: default
 spec:
-  tls:
-    certResolver: myresolver
-  entryPoints:
-    - web
-    - websecure
+  # tls:
+  #   certResolver: myresolver
+  # entryPoints:
+  #   - web
+  #   - websecure
   routes:
     - match: Host(`test.nettemsarath.com`) || Path(`/`) || PathPrefix(`/`) || Path(`/ping`)
       kind: Rule
