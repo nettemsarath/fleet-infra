@@ -14,6 +14,6 @@
 
 #   env:
 #     - name: GODADDY_API_KEY
-#       value: "3mM44UcgfH6Kbp_VUpWjcVY6DedYbqbv1Qqdu"
+#       value: "GODADDY_API_KEY"
 #     - name: GODADDY_API_SECRET
-#       value: "G5KrhmfU8WscMbHrBwisAg"
+#       value: "GODADDY_API_SECRET"
